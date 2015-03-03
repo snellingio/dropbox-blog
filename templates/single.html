@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<section id="single-section" role="main">
+		{% if post %}
+			<article id="post" class="blog-post">
+				{{ post.body|raw }}
+			</article>
+			<div class="meta">
+				<b>{{ post.meta.title|default('Untitled') }}</b>
+				<p class="date">
+					Posted {% if post.meta.author %} by {{ post.meta.author }} {% endif %}
+					on {{ post.meta.date|date('F j, Y') }}.
+				</p>
+			</div>
+			<nav role="navigation">
+				<ul>
+				<li>{% if prevPost %}<a href="{{ prevPost }}" class="prev">Previous</a>{% endif %}</li>
+				<li><a href="{{ archiveUrl }}">Archive</a></li>
+				<li>{% if nextPost %}<a href="{{ nextPost }}" class="next">Next</a>{% endif %}</li>
+				</ul>
+			</nav>
+		{% else %}
+	    <h1>Welcome to {{ appName }}</h1>
+		<article id="post" class="blog-post">
+		<p>The <i>Apps/{{ appName }}</i> folder has been created in your Dropbox account, you can save your markdown documents right there, just make sure to save them with the .md extension to start publishing.
+			</p></article>
+		{% endif %}
+	</section>
+{% endblock  %} 

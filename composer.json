@@ -1,0 +1,16 @@
+{
+    "name": "Dropbox-Blog",
+    "description": "File based blog engine",
+    "require": {
+        "php": ">=5.3.1",
+        "slim/slim": "2.*",
+        "slim/extras": "2.*",
+        "twig/twig": "1.*",
+        "symfony/yaml": "2.*",
+        "dflydev/markdown": "1.*",
+        "benthedesigner/dropbox": "dev-master"
+   },
+   "autoload": {
+       "classmap": ["src"]
+   }
+}

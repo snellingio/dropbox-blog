@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+	<section id="archive-section" role="main">
+		{% if posts|length > 0 %}
+		{% for post in posts %}
+			<article class="blog-post">
+				<a href="{{ post.meta.link|default('#') }}">{{ post.meta.title|default('Untitled') }}</a>
+				<span class="date">{{ post.meta.date|date('F j, Y') }}.</span>
+			</article>
+		{% endfor %}
+		{% else %}
+		<p id="no-posts">There are no posts.</p>
+		{% endif %}
+	</section>
+{% endblock %} 

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title>{{ appName }} - publish your own way</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/favicon.ico" rel="shortcut icon">
+    <link rel="stylesheet" href="css/style_index.css">
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-634647-36']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+</head>
+<body>
+<header class="container" role="banner">
+    <h1><a href="http://{{ hostName }}/">{{ appName }}</a></h1>
+    <nav role="navigation">
+        <a href="/blog/about">About</a>
+        <a href="/blog/support">Support</a>
+        <a href="/blog/archive">Blog</a>
+    </nav>
+</header>
+<div id="drop" role="main">
+    <div  class="container">
+        <h1>Publish your articles the easy way...</h1>
+        <p>Sync with a Dropbox folder and start publishing right away.</p>
+        <button id="home-button">Start Publishing</button>
+        <form id="form" action="/" method="post">
+             <input type="text" id="name" name="name" placeholder="User Name">
+            <input type="submit" value="Submit">
+            {% if flash.error is defined %}
+                <p id="error">{{ flash.error }}</p>
+            {% endif %}
+            <p>Please write your desired user name, it will be used to create your own articles URL.<br>
+                ex. http://{{ hostName }}/user_name</p>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="box descriptions" role="note">
+        <div>
+            <h1>Publish articles</h1>
+            <p>Write and publish articles your own way, use your editor of choice and publish through a Dropbox folder. No need to mess around with complicated content management tools.</p>
+        </div>
+        <div>
+            <h1>Sync via Dropbox</h1>
+            <p>All your articles are managed through a Dropbox folder so you always have a copy of them, we just sync it on our side to publish them on the internets. It's that easy.</p>
+        </div>
+        <div>
+            <h1>Use Markdown</h1>
+            <p>Write your articles with your preferred editor and use the  easy-to-write Markdown syntax to format them, add links or images. We will transform your text into HTML before publishing it.</p>
+        </div>
+    </div>
+</div>
+<footer role="contentinfo">
+    <div class="container">
+        <p>{{ appName }} {{ now|date('Y') }}</p>
+    </div>
+</footer>
+<script type="text/javascript">
+    var form = document.getElementById('form');
+    var homeButton = document.getElementById('home-button');
+    var nameInput = document.getElementById('name');
+    homeButton.onclick = function() {
+        homeButton.style.display = 'none';
+        form.style.display = 'block';
+        nameInput.focus();
+    };
+    var error = document.getElementById('error');
+    if(error) {
+        homeButton.click();
+    }
+</script>
+</body>
+</html> 
